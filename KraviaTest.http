@@ -1,0 +1,69 @@
+@KraviaTest_HostAddress = http://localhost:5011
+
+POST {{KraviaTest_HostAddress}}/api/SendMail/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "sender": {
+    "name": "Creditor1",
+    "organisationNumber": "987654321",
+    "postalCode": "1234",
+    "city": "City1",
+    "country": "Country",
+    "postalAddress1": "Address 1",
+    "email": "email1@creditor.com"
+  },
+  "recipient": {
+    "idNumber": "987654311",
+    "name": "Debtor1",
+    "postalCode": "1234",
+    "phone": "11234567",
+    "city": "By1",
+    "country": "Country",
+    "postalAddress1": "Addressen 1",
+    "email": "email1@debtor.com",
+    "birthDate": "1985-12-07T16:19:30.553Z"
+  },
+  "subject": "testMail",
+  "body": "test"
+}
+
+###
+POST {{KraviaTest_HostAddress}}/api/posten/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "uuid": 0,
+  "eventType": "PrintFailed",
+  "metadata": "string",
+  "created": "2023-12-07T16:26:01.685Z",
+  "mail": {
+    "sender": {
+      "name": "Creditor2",
+      "organisationNumber": "987654322",
+      "postalAddress1": "Address 2",
+      "postalCode": "2234",
+      "city": "City2",
+      "country": "Country",
+      "email": "email2@creditor.com"
+    },
+    "recipient": {
+      "idNumber": "987654312",
+      "name": "Debtor2",
+      "postalCode": "2234",
+      "phone": "21234567",
+      "city": "By2",
+      "country": "Country",
+      "postalAddress1": "Addressen 2",
+      "email": "email2@debtor.com",
+      "birthDate": "1985-12-07T16:19:30.553Z"
+    },
+    "subject": "testMail",
+    "body": "test"
+  }
+}
+
+###
+GET {{KraviaTest_HostAddress}}/api/Dashboard/1
